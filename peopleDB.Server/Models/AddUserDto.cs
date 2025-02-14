@@ -1,6 +1,6 @@
-﻿namespace peopleDB.Server.Models.Entities
+﻿namespace peopleDB.Server.Models
 {
-    public class User
+    public class AddUserDto
     {
         public int id { get; set; }
         public required string name { get; set; }
