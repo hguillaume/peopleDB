@@ -1,0 +1,6 @@
+@peopleDB.Server_HostAddress = http://localhost:5177
+
+GET {{peopleDB.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
