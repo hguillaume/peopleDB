@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35806.99 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "peopledb.client", "peopledb.client\peopledb.client.esproj", "{22560C60-88F8-2906-E43B-7E1A8211EA8C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "peopleDB.Server", "peopleDB.Server\peopleDB.Server.csproj", "{61817C38-F5DF-4383-9811-A46C1E4A9D20}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "peopledb.client", "peopledb.client\peopledb.client.esproj", "{22560C60-88F8-2906-E43B-7E1A8211EA8C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
