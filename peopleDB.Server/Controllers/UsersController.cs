@@ -16,7 +16,7 @@ namespace peopleDB.Server.Controllers
             this.dbContext = dbContext;
         }
 
-        [HttpGet]
+        [HttpGet(Name = "GetUsers")]
         public IActionResult Get()
         {
             var allUsers = dbContext.Users.ToList();
