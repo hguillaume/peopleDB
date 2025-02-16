@@ -1,3 +1,6 @@
+// nuget: Microsoft.EntityFrameworkCore.SqlServer
+// nuget: Microsoft.EntityFrameworkCore.Tools
+
 using Microsoft.EntityFrameworkCore;
 using peopleDB.Server.Data;
 
