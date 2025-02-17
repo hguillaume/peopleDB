@@ -1,5 +1,4 @@
-import "https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.8/axios.min.js"
-import "https://unpkg.com/@tailwindcss/browser@4"
+// Extensions->Manage Extensions->Install marketplace extension for Tailwind CSS VS2022 Editor Support
 
 import './assets/main.css'
 

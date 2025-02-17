@@ -9,7 +9,13 @@
     <button @click="addTestUser()" class="bg-sky-500 hover:bg-sky-700 rounded">Add Test Users</button>
     <button @click="showUserForm()" class="bg-sky-500 hover:bg-sky-700 rounded">Add Users Form</button>
 
-    <AddEdit v-if="isShowUserForm" :key="isShowUserForm" v-model:user="user" :isEditForm="isEditForm" @addTestUser="addTestUser" @addUser="addUser" @editUser="editUser" />
+    <AddEdit v-if="isShowUserForm" :key="isShowUserForm"
+             v-model:user="user"
+             v-model:isShowUserForm="isShowUserForm"
+             :isEditForm="isEditForm"
+             @addTestUser="addTestUser"
+             @addUser="addUser"
+             @editUser="editUser" />
 
     <div v-if="users" class="content">
       <table>
@@ -26,8 +32,8 @@
             <td>{{ user.id }}</td>
             <td>{{ user.name }}</td>
             <td>{{ user.email }}</td>
-            <td><button @click="editUserForm(user)" class="bg-yellow-500 hover:bg-yellow-700 rounded">Edit</button></td>
-            <td><button @click='deleteUser(user.id)' class="bg-red-500 hover:bg-red-700 rounded">Delete</button></td>
+            <td><button @click="editUserForm(user)" class=""><i class="pi pi-pen-to-square text-orange-300"></i></button></td>
+            <td><button @click='deleteUser(user.id)' class=""><i class="pi pi-delete-left text-red-500 hover:text-red-700"></i></button></td>
           </tr>
         </tbody>
       </table>
@@ -38,6 +44,7 @@
 <script setup lang="ts">
   import { ref, onMounted } from 'vue'
   import AddEdit from './AddEdit.vue'
+  import axios from 'axios'
 
   type User = {
     name: string,
