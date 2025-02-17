@@ -1,9 +1,10 @@
 <script setup>
-  import { defineProps, defineEmits } from 'vue'
+  import { defineProps, defineEmits, computed } from 'vue'
   const user = defineModel('user');
+  const isShowUserForm = defineModel('isShowUserForm');
   const emit = defineEmits(['addTestUser', 'addUser', 'editUser']);
 
-  defineProps({
+  const props = defineProps({
     user: {
       type: Object,
       default: () => ({ name: '', email: '' })
@@ -11,12 +12,14 @@
     isEditForm: {
       type: Boolean,
       default: false,
-    }
+    },
   });
 
-  function submitForm(isEditForm) {
+  const buttonText = computed(() => props.isEditForm ? 'Submit Edit' : 'Submit Add');
+  
+  function submitForm() {
     //console.log('submitForm', isEditForm, user);
-    if (isEditForm) {
+    if (props.isEditForm) {
       //console.log('edit user', user.value);
       emit('editUser', user.value);
     } else {
@@ -24,26 +27,27 @@
       //emit('addTestUser');
       emit('addUser', user.value);
     }
+    isShowUserForm.value = false;
   }
 </script>
 
 <template>
   <div class="weather-component">
     <h1>Add/Edit</h1>
-    <form @submit.prevent="submitForm(isEditForm)">
+    <form @submit.prevent="submitForm()">
       <div>
-        <label for="name">Name</label>
-        <input type="text" id="name" v-model="user.name" />
+        <label for="name" class="p-2">Name</label>
+        <input type="text" id="name" required v-model="user.name" class="bg-zinc-500 rounded" />
       </div>
       <div>
-        <label for="email">Email</label>
-        <input type="text" id="email" v-model="user.email" />
+        <label for="email"  class="p-2">Email</label>
+        <input type="text" id="email" required v-model="user.email" class="bg-zinc-500 rounded" />
       </div>
       <div>
-        <label for="password">Password</label>
-        <input type="password" id="password" v-model="user.password" />
+        <label for="password"  class="p-2">Password</label>
+        <input type="password" id="password" required v-model="user.password" class="bg-zinc-500 rounded" />
       </div>
-      <button type="submit">Submit</button>
+      <button class="text-blue-400" type="submit">{{ buttonText }}</button>
     </form>
   </div>
 </template>
