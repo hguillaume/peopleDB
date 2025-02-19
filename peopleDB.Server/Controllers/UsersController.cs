@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using peopleDB.Server.Data;
 using peopleDB.Server.Models;
@@ -30,13 +31,26 @@ namespace peopleDB.Server.Controllers
         {
             var user = new User
             {
-                name = userDto.name,
-                email = userDto.email,
-                password = userDto.password
+                Name = userDto.Name,
+                Email = userDto.Email,
+                Password = userDto.Password
             };
+
+            // Try to validate the model
+            ValidationContext vc = new ValidationContext(user); // The simplest form of validation context. It contains only a reference to the object being validated.
+            ICollection<ValidationResult> results = new List<ValidationResult>(); // Will contain the results of the validation
+            bool isValid = Validator.TryValidateObject(user, vc, results, true); // Validates the object and its properties using the previously created context.
+            if (!isValid) {
+                return BadRequest(results);
+            }
+
             dbContext.Users.Add(user);
-            dbContext.SaveChanges();
-            return StatusCode(StatusCodes.Status201Created);
+            int result = dbContext.SaveChanges();
+            if (result < 1)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            return StatusCode(StatusCodes.Status201Created, user);
         }
 
         [HttpGet]
@@ -60,9 +74,20 @@ namespace peopleDB.Server.Controllers
             {
                 return NotFound();
             }
-            user.name = userDto.name;
-            user.email = userDto.email;
-            user.password = userDto.password;
+
+            user.Name = userDto.Name;
+            user.Email = userDto.Email;
+            user.Password = userDto.Password;
+
+            // Try to validate the model
+            ValidationContext vc = new ValidationContext(user); // The simplest form of validation context. It contains only a reference to the object being validated.
+            ICollection<ValidationResult> results = new List<ValidationResult>(); // Will contain the results of the validation
+            bool isValid = Validator.TryValidateObject(user, vc, results, true); // Validates the object and its properties using the previously created context.
+            if (!isValid)
+            {
+                return BadRequest(results);
+            }
+
             dbContext.SaveChanges();
             return Ok(user);
         }

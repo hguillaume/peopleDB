@@ -5,10 +5,12 @@ namespace peopleDB.Server.Data
 {
     public class ApplicationDbContext : DbContext
     {
+        public ApplicationDbContext() { }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
-        public DbSet<User> Users { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }
