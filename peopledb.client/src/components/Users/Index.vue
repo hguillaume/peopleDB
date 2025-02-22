@@ -9,13 +9,15 @@
     <button @click="addTestUser()" class="bg-sky-500 hover:bg-sky-700 rounded">Add Test Users</button>
     <button @click="showUserForm()" class="bg-sky-500 hover:bg-sky-700 rounded">Add Users Form</button>
 
-    <AddEdit v-if="isShowUserForm" :key="isShowUserForm"
+    <AddEdit v-if="isShowUserForm" :key="isShowUserForm" data-test="addEdit"
              v-model:user="user"
              v-model:isShowUserForm="isShowUserForm"
              :isEditForm="isEditForm"
              @addTestUser="addTestUser"
              @addUser="addUser"
              @editUser="editUser" />
+
+    <!--<div data-test="testme">Test Me<span></span><span></span></div>-->
 
     <div v-if="users" class="content">
       <table>
@@ -27,7 +29,7 @@
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody data-test="users">
           <tr v-for="user in users" :key="users">
             <td>{{ user.id }}</td>
             <td>{{ user.name }}</td>
@@ -44,20 +46,21 @@
 <script setup lang="ts">
   import { ref, onMounted } from 'vue'
   import AddEdit from './AddEdit.vue'
-  import axios from 'axios'
+  import axios2 from 'axios'
+
+  const axios = axios2;
 
   type User = {
     name: string,
     email: string,
+    password: string,
   };
 
   type Users = User[];
 
   const loading = ref(false);
-  //const users: Users = ref(null);
   const users = ref(null);
   const isShowUserForm = ref(false);
-  //const user: User = ref(null);
   const user = ref(null);
   const isEditForm = ref(false);
 
@@ -67,10 +70,11 @@
     await axios.get('/api/users')
       .then(response => {
         users.value = response.data;
-        loading.value = false;
       })
       .catch(error => {
         console.error('There was an error!', error);
+      })
+      .finally(() => {
         loading.value = false;
       });
   }
@@ -79,6 +83,7 @@
     this.user = {};
     this.user.name = '';
     this.user.email = '';
+    this.user.password = '';
     //this.isShowUserForm = ! this.isShowUserForm;
     isEditForm.value = false;
     this.isShowUserForm = true;

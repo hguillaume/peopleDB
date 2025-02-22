@@ -1,36 +1,3 @@
-<script setup>
-  import { defineProps, defineEmits, computed } from 'vue'
-  const user = defineModel('user');
-  const isShowUserForm = defineModel('isShowUserForm');
-  const emit = defineEmits(['addTestUser', 'addUser', 'editUser']);
-
-  const props = defineProps({
-    user: {
-      type: Object,
-      default: () => ({ name: '', email: '' })
-    },
-    isEditForm: {
-      type: Boolean,
-      default: false,
-    },
-  });
-
-  const buttonText = computed(() => props.isEditForm ? 'Submit Edit' : 'Submit Add');
-  
-  function submitForm() {
-    //console.log('submitForm', isEditForm, user);
-    if (props.isEditForm) {
-      //console.log('edit user', user.value);
-      emit('editUser', user.value);
-    } else {
-      //console.log('add user', user.value);
-      //emit('addTestUser');
-      emit('addUser', user.value);
-    }
-    isShowUserForm.value = false;
-  }
-</script>
-
 <template>
   <div class="weather-component">
     <h1>Add/Edit</h1>
@@ -51,3 +18,42 @@
     </form>
   </div>
 </template>
+
+<script setup lang="ts">
+  import { computed } from 'vue'
+  const user = defineModel('user');
+  const isShowUserForm = defineModel('isShowUserForm');
+  const emit = defineEmits(['addTestUser', 'addUser', 'editUser']);
+
+  //type User = {
+  //  name: string,
+  //  email: string,
+  //  password: string,
+  //};
+
+  const props = defineProps({
+    user: {
+      type: Object,
+      default: () => ({ name: '', email: '', password: '' })
+    },
+    isEditForm: {
+      type: Boolean,
+      default: false,
+    },
+  });
+
+  const buttonText = computed(() => props.isEditForm ? 'Submit Edit' : 'Submit Add');
+
+  function submitForm() {
+    //console.log('submitForm', isEditForm, user);
+    if (props.isEditForm) {
+      //console.log('edit user', user.value);
+      emit('editUser', user.value);
+    } else {
+      //console.log('add user', user.value);
+      //emit('addTestUser');
+      emit('addUser', user.value);
+    }
+    isShowUserForm.value = false;
+  }
+</script>
