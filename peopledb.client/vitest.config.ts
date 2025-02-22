@@ -1,6 +1,6 @@
 /// <reference types="vitest/config" />
 /// <reference types="@vitest/browser/providers/webdriverio" />
-/// <reference types="vitest-browser-vue" />
+// /// <reference types="vitest-browser-vue" />
 //import vue2 from 'eslint-plugin-vue';
 import vue from "@vitejs/plugin-vue";
 import { config } from 'process';
