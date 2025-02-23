@@ -13,6 +13,12 @@ jobs:
       - name: git-checkout
         uses: actions/checkout@v4
 
+      - name: use node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: 'npm'
+
       - name: Install all dependencies
         working-directory: ./peopledb.client
         run: npm install
@@ -22,8 +28,8 @@ jobs:
         run: npm run build # The build command of your project
 
       - name: Push
-        # uses: s0/git-publish-subdir-action@develop
-        uses: ./peopledb.client/dist
+        uses: s0/git-publish-subdir-action@develop
+        # uses: ./peopledb.client/dist
         env:
           REPO: self
           BRANCH: deploy # The branch name where you want to push the assets
