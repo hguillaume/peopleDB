@@ -3,7 +3,10 @@
   import TheWelcome from './components/TheWelcome.vue'
   import HelloUsers from './components/Users/Index.vue'
 
+  import globTests from './components/globTests.vue'
+
   //import Modal from './components/Modal.vue';
+
 </script>
 
 <template>
@@ -13,6 +16,7 @@
     <div class="wrapper">
       <!--<HelloWeatherForecast msg="You did it!" />-->
       <!--<HelloUsers />-->
+      <globTests />
     </div>
   </header>
 
