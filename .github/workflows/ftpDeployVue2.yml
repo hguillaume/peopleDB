@@ -10,10 +10,13 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Project setup
+      working-directory: ./peopledb.client
       run: npm install
     - name: Run unit tests
+      working-directory: ./peopledb.client
       run: npm run test
     - name: Compile and minify for production
+      working-directory: ./peopledb.client
       run: npm run build
     - name : FTP-Deploy
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
