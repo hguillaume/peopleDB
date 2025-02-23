@@ -1,2 +1,2 @@
-**/peopledb.client/dist*
-**/peopledb.client/dist*/**
+./peopledb.client/dist*
+./peopledb.client/dist*/**
