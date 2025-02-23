@@ -1,2 +1,1 @@
-import { glob } from 'glob'
-const jsfiles = await glob('peopleDb.client/dist/*.*')
+peopleDb.client/dist/*.*
