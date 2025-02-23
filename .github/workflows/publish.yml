@@ -1,5 +1,5 @@
 # .github/workflows/publish.yml
-name: Publish
+name: PublishVue
 on:
   push:
     branches:
