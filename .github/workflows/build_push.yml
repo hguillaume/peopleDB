@@ -19,10 +19,12 @@ jobs:
           node-version: '22.x'
 
       - name: Install all dependencies
+        working-directory: ./peopledb.client
         run: npm ci
 
       - name: Build
-        run: npm run build # The build command of your project
+        working-directory: ./peopledb.client
+        run: npm run build --verbose # The build command of your project
     
       - name: Push
         uses: s0/git-publish-subdir-action@develop
