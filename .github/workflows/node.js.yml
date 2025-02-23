@@ -30,9 +30,9 @@ jobs:
     - name: npm CI
       working-directory: ./peopledb.client
       run: npm ci
-    - name: npm run-script build
+    - name: npm run build
       working-directory: ./peopledb.client
-      run: npm run build --if-present
+      run: npm run build --if-present --verbose
     - name: npm test
       working-directory: ./peopledb.client
       run: npm test
