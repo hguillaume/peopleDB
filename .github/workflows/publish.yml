@@ -23,7 +23,7 @@ jobs:
 
       - name: Push
         # uses: s0/git-publish-subdir-action@develop
-		    uses: ./peopledb.client/dist
+        uses: ./peopledb.client/dist
         env:
           REPO: self
           BRANCH: deploy # The branch name where you want to push the assets
