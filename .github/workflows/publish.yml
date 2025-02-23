@@ -38,4 +38,4 @@ jobs:
           # MESSAGE: "Build: ({sha}) {msg}" # The commit message
           MESSAGE: "Publish" # The commit message
           TARGET_DIR: ./peopledb.client/dist
-          CLEAR_GLOBS_FILE: CLEAR_GLOBS_FILE
+          # CLEAR_GLOBS_FILE: CLEAR_GLOBS_FILE
