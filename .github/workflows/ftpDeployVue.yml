@@ -27,7 +27,7 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         protocol: ftps
         server-dir: wwwroot/
-        local-dir: peopledb.client/dist
+        local-dir: peopledb.client/dist/
         # port: 1234 # todo replace with your web hosts ftps port
         exclude: |
                   **/.git*
