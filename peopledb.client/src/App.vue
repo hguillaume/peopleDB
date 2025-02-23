@@ -3,7 +3,7 @@
   import TheWelcome from './components/TheWelcome.vue'
   import HelloUsers from './components/Users/Index.vue'
 
-  import globTests from './components/globTests.vue'
+  //import globTests from './components/globTests.vue'
 
   //import Modal from './components/Modal.vue';
 
@@ -16,7 +16,7 @@
     <div class="wrapper">
       <!--<HelloWeatherForecast msg="You did it!" />-->
       <!--<HelloUsers />-->
-      <globTests />
+      <!--<globTests />-->
     </div>
   </header>
 
