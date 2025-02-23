@@ -1,5 +1,5 @@
 on:
-  create:
+  push:
     branches:
       - 'publishVue'
 name: 🚀 Deploy website on push
