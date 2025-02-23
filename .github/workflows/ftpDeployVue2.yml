@@ -1,0 +1,27 @@
+name: 🚀 FTP Deploy on push
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    - name: Project setup
+      run: npm install
+    - name: Run unit tests
+      run: npm run test
+    - name: Compile and minify for production
+      run: npm run build
+    - name : FTP-Deploy
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with: 
+       # GITHUB_TOKEN :  ${{ secrets.GITHUB_TOKEN }}
+       server :  site18627.siteasp.net
+       password :  ${{ secrets.FTP_PASSWORD }}
+       username :  site18627
+       local-dir :  peopledb.client/dist/
+       server-dir :  wwwroot/
+       protocol: ftps
