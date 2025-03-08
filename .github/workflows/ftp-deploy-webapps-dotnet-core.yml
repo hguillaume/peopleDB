@@ -86,6 +86,30 @@ jobs:
          server :  site18627.siteasp.net
          password :  ${{ secrets.FTP_PASSWORD }}
          username :  site18627
-         local-dir :  peopledb.server/
-         server-dir :  wwwroot/
+         local-dir :  .net-app/
+         server-dir :  private/peopledb/
          protocol: ftps
+
+  list-files:
+    runs-on: ubuntu-latest
+    outputs:
+      paths: ${{ steps.list-files.outputs.paths }}
+    steps:
+      - name: List Files
+        id: list-files
+        uses: mirko-felice/list-files-action@v3.0.5
+        with:
+          repo: ${{ github.repository }}
+          ref: ${{ github.ref }}
+          path: "."
+          # ext: ".yml"
+  Test:
+    needs: list-files
+    strategy:
+      matrix:
+        paths: ${{ fromJson(needs.list-files.outputs.paths) }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output results
+        run: |
+          echo ${{ matrix.paths }}
