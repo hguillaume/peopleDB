@@ -86,6 +86,6 @@ jobs:
          server :  site18627.siteasp.net
          password :  ${{ secrets.FTP_PASSWORD }}
          username :  site18627
-         local-dir :  peopledb.server/bin
+         local-dir :  peopledb.server/bin/
          server-dir :  wwwroot/
          protocol: ftps
