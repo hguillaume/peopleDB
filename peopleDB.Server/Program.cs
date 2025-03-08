@@ -1,8 +1,10 @@
 // nuget: Microsoft.EntityFrameworkCore.SqlServer
 // nuget: Microsoft.EntityFrameworkCore.Tools
+// dotnet tool install -g Microsoft.dotnet-openapi
 
 using Microsoft.EntityFrameworkCore;
 using peopleDB.Server.Data;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +28,7 @@ app.MapStaticAssets();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.MapScalarApiReference();
 }
 
 app.UseAuthorization();
