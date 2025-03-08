@@ -7,7 +7,7 @@ import App from './App.vue'
 
 // Routing
 import { createRouter, createWebHistory } from 'vue-router'
-import TheWelcome from './components/TheWelcome.vue';
+//import TheWelcome from './components/TheWelcome.vue';
 import IndexUsers from './components/Users/Index.vue';
 import View404 from './components/404.vue';
 const router = createRouter({

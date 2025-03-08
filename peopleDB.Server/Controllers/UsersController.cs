@@ -17,6 +17,7 @@ namespace peopleDB.Server.Controllers
         public UsersController(ApplicationDbContext dbContext)
         {
             this.dbContext = dbContext;
+            dbContext.Database.EnsureCreated();
         }
 
         [HttpGet(Name = "GetUsers")]
