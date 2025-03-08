@@ -93,5 +93,5 @@ jobs:
          password :  ${{ secrets.FTP_PASSWORD }}
          username :  site18627
          local-dir :  ./
-         server-dir :  private/peopledb/
+         server-dir :  wwwroot/
          protocol: ftps
