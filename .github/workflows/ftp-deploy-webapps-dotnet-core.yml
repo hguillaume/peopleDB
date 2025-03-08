@@ -74,12 +74,15 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
+      - name: List all files before artifact
+        run: ls
+      
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
           name: .net-app
 
-      - name: List all files
+      - name: List all files after artifact
         run: ls
 
       - name : FTP-Deploy
@@ -89,6 +92,6 @@ jobs:
          server :  site18627.siteasp.net
          password :  ${{ secrets.FTP_PASSWORD }}
          username :  site18627
-         local-dir :  .net-app/
+         local-dir :  ./
          server-dir :  private/peopledb/
          protocol: ftps
