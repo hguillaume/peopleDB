@@ -1,4 +1,4 @@
-name: 🚀 Vue FTP Deploy on push
+name: 🚀 Vue build and FTP Deploy on push
 
 on:
   push:
