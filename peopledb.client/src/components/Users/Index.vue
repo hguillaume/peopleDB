@@ -44,24 +44,24 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, onMounted } from 'vue'
+  import { ref, onMounted, reactive } from 'vue'
   import AddEdit from './AddEdit.vue'
   import axios2 from 'axios'
 
   const axios = axios2;
 
-  type User = {
-    name: string,
-    email: string,
-    password: string,
-  };
+  //type User = {
+  //  name: string,
+  //  email: string,
+  //  password: string,
+  //};
 
-  type Users = User[];
+  //type Users = User[];
 
   const loading = ref(false);
   const users = ref(null);
   const isShowUserForm = ref(false);
-  const user = ref(null);
+  const user = ref({});
   const isEditForm = ref(false);
   const isTest = false;
 
